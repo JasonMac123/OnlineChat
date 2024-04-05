@@ -33,11 +33,11 @@ export const AuthForm = () => {
         "
       >
         <form className="space-y-6" onSubmit={() => {}}>
-          {variant === "REGISTER" && <Input />}
-          <Input />
-          <Input />
+          {variant === "REGISTER" && <Input type="text" placeholder="Name" />}
+          <Input type="email" placeholder="Email" />
+          <Input type="password" placeholder="Password" />
           <div>
-            <Button />
+            <Button className="w-full">{variant === "LOGIN" ? "Sign In" : "Register"}</Button>
           </div>
         </form>
 
