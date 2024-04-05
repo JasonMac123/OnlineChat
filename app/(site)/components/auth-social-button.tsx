@@ -1,34 +1,18 @@
+import { Button } from "@/components/ui/button";
 import { LucideIcon } from "lucide-react";
 
 interface AuthSocialButtonProps {
   icon: LucideIcon;
+  label: string;
   onClick: () => void;
 }
 
-const AuthSocialButton: React.FC<AuthSocialButtonProps> = ({ icon: Icon, onClick }) => {
+const AuthSocialButton: React.FC<AuthSocialButtonProps> = ({ icon: Icon, label, onClick }) => {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="
-        inline-flex
-        w-full 
-        justify-center 
-        rounded-md 
-        bg-white 
-        px-4 
-        py-2 
-        text-gray-500 
-        shadow-sm 
-        ring-1 
-        ring-inset 
-        ring-gray-300 
-        hover:bg-gray-50 
-        focus:outline-offset-0
-      "
-    >
+    <Button className="w-full py-4">
       <Icon />
-    </button>
+      <h2>{label}</h2>
+    </Button>
   );
 };
 
