@@ -1,9 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Github, Youtube } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useCallback } from "react";
+
+import AuthSocialButton from "./auth-social-button";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 type Variant = "LOGIN" | "REGISTER";
 
@@ -56,6 +59,10 @@ export const AuthForm = () => {
             <div className="relative flex justify-center text-sm">
               <span className="bg-white px-2 text-gray-500">Or continue with</span>
             </div>
+          </div>
+          <div className="mt-6 space-y-2 gap-2">
+            <AuthSocialButton icon={Github} label="Github" onClick={() => {}} />
+            <AuthSocialButton icon={Youtube} label="Youtube" onClick={() => {}} />
           </div>
         </div>
         <div
