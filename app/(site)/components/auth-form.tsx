@@ -1,7 +1,12 @@
 "use client";
 
-import { Github, Youtube } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { Github, Youtube } from "lucide-react";
+
 import { useState, useEffect, useCallback } from "react";
 
 import AuthSocialButton from "./auth-social-button";
@@ -22,6 +27,61 @@ export const AuthForm = () => {
       setVariant("LOGIN");
     }
   }, [variant]);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FieldValues>({
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+    },
+  });
+
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    setIsLoading(true);
+
+    if (variant === "REGISTER") {
+      axios
+        .post("/api/register", data)
+        .then(() =>
+          signIn("credentials", {
+            ...data,
+            redirect: false,
+          })
+        )
+        .then((callback) => {
+          if (callback?.error) {
+            toast.error("Invalid credentials!");
+          }
+
+          if (callback?.ok) {
+            router.push("/conversations");
+          }
+        })
+        .catch(() => toast.error("Something went wrong!"))
+        .finally(() => setIsLoading(false));
+    }
+
+    if (variant === "LOGIN") {
+      signIn("credentials", {
+        ...data,
+        redirect: false,
+      })
+        .then((callback) => {
+          if (callback?.error) {
+            toast.error("Invalid credentials!");
+          }
+
+          if (callback?.ok) {
+            router.push("/conversations");
+          }
+        })
+        .finally(() => setIsLoading(false));
+    }
+  };
 
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -62,7 +122,6 @@ export const AuthForm = () => {
           </div>
           <div className="mt-6 space-y-2 gap-2">
             <AuthSocialButton icon={Github} label="Github" onClick={() => {}} />
-            <AuthSocialButton icon={Youtube} label="Youtube" onClick={() => {}} />
           </div>
         </div>
         <div
