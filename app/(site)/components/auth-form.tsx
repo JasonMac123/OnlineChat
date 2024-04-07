@@ -103,12 +103,14 @@ export const AuthForm = () => {
           sm:px-10
         "
       >
-        <form className="space-y-6" onSubmit={() => {}}>
+        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           {variant === "REGISTER" && <Input type="text" placeholder="Name" />}
           <Input type="email" placeholder="Email" />
           <Input type="password" placeholder="Password" />
           <div>
-            <Button className="w-full">{variant === "LOGIN" ? "Sign In" : "Register"}</Button>
+            <Button className="w-full" disabled={isLoading} type="submit">
+              {variant === "LOGIN" ? "Sign In" : "Register"}
+            </Button>
           </div>
         </form>
 
