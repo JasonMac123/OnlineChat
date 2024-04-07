@@ -104,9 +104,15 @@ export const AuthForm = () => {
         "
       >
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-          {variant === "REGISTER" && <Input type="text" placeholder="Name" />}
-          <Input type="email" placeholder="Email" />
-          <Input type="password" placeholder="Password" />
+          {variant === "REGISTER" && (
+            <Input type="text" placeholder="Name" {...register("name", { required: true })} />
+          )}
+          <Input type="email" placeholder="Email" {...register("email", { required: true })} />
+          <Input
+            type="password"
+            placeholder="Password"
+            {...register("password", { required: true })}
+          />
           <div>
             <Button className="w-full" disabled={isLoading} type="submit">
               {variant === "LOGIN" ? "Sign In" : "Register"}
