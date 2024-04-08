@@ -136,9 +136,7 @@ export const AuthForm = () => {
               <span className="bg-white px-2 text-gray-500">Or continue with</span>
             </div>
           </div>
-          <div className="mt-6 space-y-2 gap-2">
-            <AuthSocialButton icon={Github} label="Github" onClick={() => {}} />
-          </div>
+          <div className="mt-6 space-y-2 gap-2"></div>
         </div>
         <div
           className="
