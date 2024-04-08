@@ -9,7 +9,7 @@ interface AuthSocialButtonProps {
 
 const AuthSocialButton: React.FC<AuthSocialButtonProps> = ({ icon: Icon, label, onClick }) => {
   return (
-    <Button className="w-full py-4" onClick={onClick} asChild>
+    <Button className="w-full py-4" onClick={onClick}>
       <Icon />
       <h2>{label}</h2>
     </Button>
