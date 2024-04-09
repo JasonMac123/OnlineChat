@@ -1,4 +1,4 @@
-const EmptyState = () => {
+export const EmptyState = () => {
   return (
     <div
       className="
@@ -22,5 +22,3 @@ const EmptyState = () => {
     </div>
   );
 };
-
-export default EmptyState;
