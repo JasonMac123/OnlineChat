@@ -5,7 +5,7 @@ import { LucideIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-interface DesktopItemProps {
+interface DesktopSideBarItemProps {
   label: string;
   icon: LucideIcon;
   href: string;
@@ -13,7 +13,13 @@ interface DesktopItemProps {
   active?: boolean;
 }
 
-const DesktopItem: React.FC<DesktopItemProps> = ({ label, icon: Icon, href, onClick, active }) => {
+export const DesktopSideBarItem: React.FC<DesktopSideBarItemProps> = ({
+  label,
+  icon: Icon,
+  href,
+  onClick,
+  active,
+}) => {
   const handleClick = () => {
     if (onClick) {
       return onClick();
@@ -25,19 +31,7 @@ const DesktopItem: React.FC<DesktopItemProps> = ({ label, icon: Icon, href, onCl
       <Link
         href={href}
         className={cn(
-          `
-          group
-          flex
-          gap-x-3
-          rounded-md
-          p-3
-          text-sm
-          leading-6
-          font-semibold
-          text-gray-500
-          hover:text-black
-          hover:bg-gray-100
-        `,
+          `group flex gap-x-3 rounded-md p-3 text-sm leading-6 font-semibold text-gray-500 hover:text-black hover:bg-gray-100`,
           active && "bg-gray-100 text-black"
         )}
       >
@@ -47,5 +41,3 @@ const DesktopItem: React.FC<DesktopItemProps> = ({ label, icon: Icon, href, onCl
     </li>
   );
 };
-
-export default DesktopItem;
