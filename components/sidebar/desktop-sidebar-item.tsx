@@ -13,13 +13,13 @@ interface DesktopSideBarItemProps {
   active?: boolean;
 }
 
-export const DesktopSideBarItem: React.FC<DesktopSideBarItemProps> = ({
+export const DesktopSideBarItem = ({
   label,
   icon: Icon,
   href,
   onClick,
   active,
-}) => {
+}: DesktopSideBarItemProps) => {
   const handleClick = () => {
     if (onClick) {
       return onClick();

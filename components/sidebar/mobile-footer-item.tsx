@@ -12,7 +12,7 @@ interface MobileFooterItemProps {
   onClick?: () => void;
 }
 
-export const MobileFooterItem: React.FC<MobileFooterItemProps> = ({ href, icon: Icon, active, onClick }) => {
+export const MobileFooterItem = ({ href, icon: Icon, active, onClick }: MobileFooterItemProps) => {
   return (
     <Link
       onClick={onClick}
