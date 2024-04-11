@@ -5,14 +5,14 @@ import { LucideIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-interface MobileItemProps {
+interface MobileFooterItemProps {
   href: string;
   icon: LucideIcon;
   active?: boolean;
   onClick?: () => void;
 }
 
-const MobileItem: React.FC<MobileItemProps> = ({ href, icon: Icon, active, onClick }) => {
+export const MobileFooterItem: React.FC<MobileFooterItemProps> = ({ href, icon: Icon, active, onClick }) => {
   return (
     <Link
       onClick={onClick}
@@ -26,5 +26,3 @@ const MobileItem: React.FC<MobileItemProps> = ({ href, icon: Icon, active, onCli
     </Link>
   );
 };
-
-export default MobileItem;
