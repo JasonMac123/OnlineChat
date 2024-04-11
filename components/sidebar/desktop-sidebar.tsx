@@ -6,6 +6,7 @@ import { User } from "@prisma/client";
 import useRoutes from "@/app/hooks/useRoutes";
 
 import { DesktopSideBarItem } from "./desktop-sidebar-item";
+import { UserAvatar } from "../user-avatar";
 
 interface DesktopSidebarProps {
   currentUser: User | null;
@@ -33,10 +34,9 @@ export const DesktopSideBar = ({ currentUser }: DesktopSidebarProps) => {
         </ul>
       </nav>
       <nav className="mt-4 flex flex-col justify-between items-center">
-        <div
-          onClick={() => setIsOpen(true)}
-          className="cursor-pointer hover:opacity-75 transition"
-        ></div>
+        <div onClick={() => setIsOpen(true)} className="cursor-pointer hover:opacity-75 transition">
+          <UserAvatar user={currentUser} />
+        </div>
       </nav>
     </div>
   );
