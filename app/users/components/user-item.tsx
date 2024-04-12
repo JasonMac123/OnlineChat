@@ -8,11 +8,11 @@ import { User } from "@prisma/client";
 
 import { UserAvatar } from "@/components/user-avatar";
 
-interface UserBoxProps {
+interface UserItemProps {
   data: User;
 }
 
-const UserBox: React.FC<UserBoxProps> = ({ data }) => {
+export const UserItem = ({ data }: UserItemProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -47,5 +47,3 @@ const UserBox: React.FC<UserBoxProps> = ({ data }) => {
     </>
   );
 };
-
-export default UserBox;
