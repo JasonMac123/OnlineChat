@@ -1,9 +1,9 @@
 "use client";
 
-import { User } from "@prisma/client";
+import { Conversation } from "@prisma/client";
 
 interface ConversationListProps {
-  items: User[];
+  items: Conversation[];
 }
 
 export const ConversationList = ({}: ConversationListProps) => {
