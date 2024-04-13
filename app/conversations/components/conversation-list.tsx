@@ -35,7 +35,7 @@ export const ConversationList = ({ items }: ConversationListProps) => {
           </div>
         </div>
         {items.map((chat) => (
-          <ConversationItem key={chat.id} />
+          <ConversationItem key={chat.id} data={chat} selected={conversationId === chat.id} />
         ))}
       </div>
     </aside>
