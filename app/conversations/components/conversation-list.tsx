@@ -6,6 +6,6 @@ interface ConversationListProps {
   items: Conversation[];
 }
 
-export const ConversationList = ({}: ConversationListProps) => {
+export const ConversationList = ({ items }: ConversationListProps) => {
   return <div></div>;
 };
