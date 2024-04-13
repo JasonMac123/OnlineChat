@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import useConversation from "@/app/hooks/useConversation";
 
 import { FullConversationType } from "@/app/types";
+import { ConversationItem } from "./conversation-item";
 
 interface ConversationListProps {
   items: FullConversationType[];
@@ -33,6 +34,9 @@ export const ConversationList = ({ items }: ConversationListProps) => {
             <MessageSquarePlus size={24} />
           </div>
         </div>
+        {items.map((chat) => (
+          <ConversationItem key={chat.id} />
+        ))}
       </div>
     </aside>
   );
