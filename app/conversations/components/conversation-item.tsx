@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils";
 import { FullConversationType } from "@/app/types";
 import useOtherUser from "@/app/hooks/useOtherUser";
 
+import { UserAvatar } from "@/components/user-avatar";
+
 interface ConversationItemProps {
   data: FullConversationType;
   selected?: boolean;
@@ -61,5 +63,22 @@ export const ConversationItem = ({ data, selected }: ConversationItemProps) => {
     return "Start the conversation!";
   }, [lastMessage]);
 
-  return <div onClick={handleClick}></div>;
+  return (
+    <div
+      onClick={handleClick}
+      className={cn(
+        "w-full relative flex items-center space-x-3 hover:bg-neutral-100 rounded-lg transition cursor-pointer p-3",
+        selected ? "bg-neutral-100" : "bg-white"
+      )}
+    >
+      <UserAvatar user={otherUser} />
+      <div className="min-w-0 flex-1">
+        <div className="focus:outline-none">
+          <div className="flex justify-between items-center mb-1">
+            <p>{data.name || otherUser.name}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
