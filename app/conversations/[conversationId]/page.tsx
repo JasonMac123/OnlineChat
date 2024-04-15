@@ -1,6 +1,8 @@
 import getConversationById from "@/app/actions/getConversationById";
 import getMessages from "@/app/actions/getMessages";
+
 import { EmptyState } from "@/components/empty-state";
+import { Header } from "./components/header";
 
 interface ConversationPageParams {
   conversationId: string;
@@ -20,7 +22,13 @@ const ConversationId = async ({ params }: { params: ConversationPageParams }) =>
     );
   }
 
-  return <div></div>;
+  return (
+    <div className="lg:pl-80 h-full">
+      <div className="h-full flex flex-col">
+        <Header conversation={conversation} />
+      </div>
+    </div>
+  );
 };
 
 export default ConversationId;
