@@ -76,7 +76,13 @@ export const ConversationItem = ({ data, selected }: ConversationItemProps) => {
         <div className="focus:outline-none">
           <div className="flex justify-between items-center mb-1">
             <p>{data.name || otherUser.name}</p>
+            {lastMessage.createdAt && (
+              <p className="text-xs text-gray-400 font-light">
+                {format(new Date(lastMessage.createdAt), "p")}
+              </p>
+            )}
           </div>
+          <p>{lastMessageText}</p>
         </div>
       </div>
     </div>
