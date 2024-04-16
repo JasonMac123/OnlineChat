@@ -2,9 +2,11 @@
 
 import axios from "axios";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { ImageUp, SendHorizonal } from "lucide-react";
+import { CldUploadButton } from "next-cloudinary";
 
 import useConversation from "@/app/hooks/useConversation";
-import { ImageUp, SendHorizonal } from "lucide-react";
+
 import { Input } from "@/components/ui/input";
 
 export const ChatBox = () => {
@@ -26,9 +28,15 @@ export const ChatBox = () => {
     axios.post("/api/messages", { ...data, conversationId });
   };
 
+  const handleUpload = (result: any) => {
+    axios.post("/api/messages", { image: result?.info?.secure_url, conversationId });
+  };
+
   return (
     <div className="py-4 px-4 bg-white border-t flex items-cetner gap-2 lg:gap-4 w-full">
-      <ImageUp size={32} className="text-sky-400" />
+      <CldUploadButton options={{ maxFiles: 1 }} onSuccess={handleUpload} uploadPreset="cdqkfa7y">
+        <ImageUp size={32} className="text-sky-400" />
+      </CldUploadButton>
       <form onSubmit={handleSubmit(onSubmit)} className="flex items-center gap-2 lg:gap-4 w-full">
         <div className="relative w-full">
           <Input
