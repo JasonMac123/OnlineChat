@@ -4,7 +4,7 @@ import axios from "axios";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import useConversation from "@/app/hooks/useConversation";
-import { ImageUp } from "lucide-react";
+import { ImageUp, SendHorizonal } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 export const ChatMessages = () => {
@@ -40,6 +40,12 @@ export const ChatMessages = () => {
             className="text-black font-light py-2 px-4 bg-neutral-200 w-full rounded-full focus:outline-none"
           />
         </div>
+        <button
+          type="submit"
+          className="rounded-full p-2 bg-sky-500 cursor-pointer hover:bg-sky-600 transition"
+        >
+          <SendHorizonal size={18} className="text-white" />
+        </button>
       </form>
     </div>
   );
