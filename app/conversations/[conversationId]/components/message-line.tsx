@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 
 import { UserAvatar } from "@/components/user-avatar";
 import { format } from "date-fns";
+import Image from "next/image";
 
 interface MessageLineProps {
   data: FullMessageType;
@@ -40,7 +41,17 @@ export const MessageLine = ({ data, isLast }: MessageLineProps) => {
             (data.image ? "rounded-md p-0" : "rounded-full py-2 px-3")
         )}
       >
-        <p>{data.body}</p>
+        {data.image ? (
+          <Image
+            alt="Image"
+            height={288}
+            width={288}
+            src={data.image}
+            className="object-cover cursor-pointer hover:scale-110 transition translate"
+          />
+        ) : (
+          <p>{data.body}</p>
+        )}
       </div>
     </div>
   );
