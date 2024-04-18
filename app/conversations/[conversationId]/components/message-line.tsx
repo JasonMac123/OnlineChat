@@ -53,6 +53,7 @@ export const MessageLine = ({ data, isLast }: MessageLineProps) => {
           <p>{data.body}</p>
         )}
       </div>
+      {isLast && isOwn && seenList.length > 0 && <p>{`Seen by ${seenList}`}</p>}
     </div>
   );
 };
