@@ -25,8 +25,8 @@ const ConversationId = async ({ params }: { params: ConversationPageParams }) =>
   }
 
   return (
-    <div className="lg:pl-80 h-full">
-      <div className="h-full flex flex-col">
+    <div className="lg:pl-80 h-screen">
+      <div className="h-screen flex flex-col">
         <Header conversation={conversation} />
         <ChatMessages initialMessages={messages} />
         <ChatBox />
