@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { MessageSquarePlus } from "lucide-react";
 
+import { User } from "@prisma/client";
+
 import { cn } from "@/lib/utils";
 import useConversation from "@/app/hooks/useConversation";
 
@@ -12,9 +14,10 @@ import { ConversationItem } from "./conversation-item";
 
 interface ConversationListProps {
   items: FullConversationType[];
+  users: User[];
 }
 
-export const ConversationList = ({ items }: ConversationListProps) => {
+export const ConversationList = ({ items, users }: ConversationListProps) => {
   const [list, setList] = useState(items);
   const router = useRouter();
 
@@ -34,7 +37,7 @@ export const ConversationList = ({ items }: ConversationListProps) => {
             <MessageSquarePlus size={24} />
           </div>
         </div>
-        {items.map((chat) => (
+        {list.map((chat) => (
           <ConversationItem key={chat.id} data={chat} selected={conversationId === chat.id} />
         ))}
       </div>
