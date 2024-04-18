@@ -29,7 +29,7 @@ export const Header = ({ conversation }: HeaderProps) => {
 
   return (
     <>
-      {profileModal && <ProfileModal />}
+      {profileModal && <ProfileModal data={conversation} onClose={() => setProfileModal(false)} />}
       <div className="bg-white w-full flex border-b-[1px] sm:px-4 py-3 px-4 lg:px-6 justify-between items-center shadow-sm">
         <div className="flex gap-3 items-center">
           <Link
@@ -46,7 +46,7 @@ export const Header = ({ conversation }: HeaderProps) => {
         </div>
         <Menu
           size={36}
-          onClick={() => setProfileModal(!profileModal)}
+          onClick={() => setProfileModal(true)}
           className="text-sky-500 cursor-pointer hover:text-sky-600 transition"
         />
       </div>
