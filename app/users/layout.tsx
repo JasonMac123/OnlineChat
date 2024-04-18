@@ -8,8 +8,10 @@ const UsersLayout = async ({ children }: { children: React.ReactNode }) => {
 
   return (
     <SideBar>
-      <UserList users={users}/>
-      <div className="h-full">{children}</div>;
+      <div className="h-full">
+        <UserList users={users} />
+        {children}
+      </div>
     </SideBar>
   );
 };
