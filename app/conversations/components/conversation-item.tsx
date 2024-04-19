@@ -5,10 +5,9 @@ import { useRouter } from "next/navigation";
 import { format } from "date-fns";
 import { useSession } from "next-auth/react";
 
-import { Conversation, Message, User } from "@prisma/client";
 import { cn } from "@/lib/utils";
-
 import { FullConversationType } from "@/app/types";
+
 import useOtherUser from "@/app/hooks/useOtherUser";
 
 import { UserAvatar } from "@/components/user-avatar";
@@ -52,11 +51,11 @@ export const ConversationItem = ({ data, selected }: ConversationItemProps) => {
   }, [lastMessage, userEmail]);
 
   const lastMessageText = useMemo(() => {
-    if (lastMessage.image) {
+    if (lastMessage?.image) {
       return "Sent an image";
     }
 
-    if (lastMessage.body) {
+    if (lastMessage?.body) {
       return lastMessage.body;
     }
 
@@ -76,7 +75,7 @@ export const ConversationItem = ({ data, selected }: ConversationItemProps) => {
         <div className="focus:outline-none">
           <div className="flex justify-between items-center mb-1">
             <p>{data.name || otherUser.name}</p>
-            {lastMessage.createdAt && (
+            {lastMessage?.createdAt && (
               <p className="text-xs text-gray-400 font-light">
                 {format(new Date(lastMessage.createdAt), "p")}
               </p>
