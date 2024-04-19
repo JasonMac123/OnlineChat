@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { format } from "date-fns";
-import { Menu } from "lucide-react";
+import { Menu, Trash } from "lucide-react";
 import { Conversation, User } from "@prisma/client";
 
 import useOtherUser from "@/app/hooks/useOtherUser";
@@ -11,6 +11,7 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -65,6 +66,12 @@ export const ProfileSheet = ({ data }: ProfileSheetProps) => {
             <p className="text-sm mt-1 text-gray-900">{joinedDate}</p>
           </div>
         </div>
+        <SheetFooter className="mb-12">
+          <div className="flex flex-col space-y-2">
+            <Trash size={40} />
+            <p className="text-sm font-light text-neutral-900">Delete</p>
+          </div>
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   );
