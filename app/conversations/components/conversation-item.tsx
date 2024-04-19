@@ -81,7 +81,11 @@ export const ConversationItem = ({ data, selected }: ConversationItemProps) => {
               </p>
             )}
           </div>
-          <p>{lastMessageText}</p>
+          <p
+            className={cn("truncate text-xs", hasSeen ? "text-gray-500" : "text-black font-medium")}
+          >
+            {lastMessageText}
+          </p>
         </div>
       </div>
     </div>
