@@ -6,8 +6,9 @@ import { Conversation, User } from "@prisma/client";
 import { ArrowLeft } from "lucide-react";
 
 import useOtherUser from "@/app/hooks/useOtherUser";
+
 import { UserAvatar } from "@/components/user-avatar";
-import { ProfileDrawer } from "./profile-drawer";
+import { ProfileSheet } from "./profile-sheet";
 
 interface HeaderProps {
   conversation: Conversation & {
@@ -41,7 +42,7 @@ export const Header = ({ conversation }: HeaderProps) => {
           <div className="text-sm font-light text-neutral-500">{statusText}</div>
         </div>
       </div>
-      <ProfileDrawer data={conversation} />
+      <ProfileSheet data={conversation} />
     </div>
   );
 };
