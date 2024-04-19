@@ -7,7 +7,15 @@ import { Conversation, User } from "@prisma/client";
 
 import useOtherUser from "@/app/hooks/useOtherUser";
 
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { UserAvatar } from "@/components/user-avatar";
 
 interface ProfileSheetProps {
   data: Conversation & {
@@ -39,8 +47,14 @@ export const ProfileSheet = ({ data }: ProfileSheetProps) => {
       <SheetTrigger asChild>
         <Menu size={20} className="text-sky-400 hover:text-sky-600 cursor-pointer transition" />
       </SheetTrigger>
-      <SheetContent side={"right"} className="w-full lg:w-1/3 xl:w-1/6">
-        <SheetTitle>{title}</SheetTitle>
+      <SheetContent side={"right"} className="w-full md:w-1/2 lg:w-1/3 xl:w-1/6">
+        <SheetHeader>
+          <div className="flex flex-col items-center justify-center space-y-2">
+            <UserAvatar user={otherUser} />
+            <SheetTitle>{title}</SheetTitle>
+            <SheetDescription>{statusText}</SheetDescription>
+          </div>
+        </SheetHeader>
       </SheetContent>
     </Sheet>
   );
