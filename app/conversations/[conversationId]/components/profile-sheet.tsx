@@ -11,7 +11,6 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -66,12 +65,12 @@ export const ProfileSheet = ({ data }: ProfileSheetProps) => {
             <p className="text-sm mt-1 text-gray-900">{joinedDate}</p>
           </div>
         </div>
-        <SheetFooter className="mb-12">
-          <div className="flex flex-col space-y-2">
-            <Trash size={40} />
-            <p className="text-sm font-light text-neutral-900">Delete</p>
+        <div className="flex flex-col space-y-2 cursor-pointer items-center justify-center mt-40">
+          <div className="p-4 bg-neutral-200 rounded-full">
+            <Trash size={20} />
           </div>
-        </SheetFooter>
+          <p className="text-sm font-light text-neutral-900">Delete</p>
+        </div>
       </SheetContent>
     </Sheet>
   );
