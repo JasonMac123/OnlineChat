@@ -16,6 +16,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { UserAvatar } from "@/components/user-avatar";
+import { ConfirmModal } from "./confirm-modal";
 
 interface ProfileSheetProps {
   data: Conversation & {
@@ -66,10 +67,7 @@ export const ProfileSheet = ({ data }: ProfileSheetProps) => {
           </div>
         </div>
         <div className="flex flex-col space-y-2 cursor-pointer items-center justify-center mt-40">
-          <div className="p-4 bg-neutral-200 rounded-full">
-            <Trash size={20} />
-          </div>
-          <p className="text-sm font-light text-neutral-900">Delete</p>
+          <ConfirmModal />
         </div>
       </SheetContent>
     </Sheet>
