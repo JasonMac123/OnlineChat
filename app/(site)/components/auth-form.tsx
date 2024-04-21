@@ -81,10 +81,12 @@ export const AuthForm = () => {
         .then((callback) => {
           if (callback?.error) {
             toast.error("Invalid credentials!");
+            return;
           }
 
           if (callback?.ok) {
             router.push("/conversations");
+            return;
           }
         })
         .finally(() => setIsLoading(false));
