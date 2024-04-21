@@ -33,13 +33,7 @@ export const MessageLine = ({ data, isLast }: MessageLineProps) => {
           <p className="text-sm text-gray-500">{data.sender.name}</p>
           <p className="text-sm text-gray-500">{format(new Date(data.createdAt), "p")}</p>
         </div>
-        <div
-          className={cn(
-            "text-sm w-fit overflow-hidden",
-            (isOwn ? "bg-sky-500 text-white" : "bg-gray-100") &&
-              (data.image ? "rounded-md p-0" : "rounded-full py-2 px-3")
-          )}
-        >
+        <div>
           {data.image ? (
             <Image
               alt="Image"
@@ -49,7 +43,16 @@ export const MessageLine = ({ data, isLast }: MessageLineProps) => {
               className="object-cover cursor-pointer hover:scale-110 transition translate"
             />
           ) : (
-            <p>{data.body}</p>
+            <p
+              className={cn(
+                "text-sm overflow-hidden p-4 rounded-2xl",
+                isOwn
+                  ? "bg-sky-500 text-white origin-bottom-right transform rounded-tr-none"
+                  : "bg-neutral-300 origin-top-left transform rounded-tl-none"
+              )}
+            >
+              {data.body}
+            </p>
           )}
         </div>
 
