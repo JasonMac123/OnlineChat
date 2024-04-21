@@ -69,7 +69,7 @@ export const AuthForm = () => {
             router.push("/conversations");
           }
         })
-        .catch(() => toast.error("Something went wrong!"))
+        .catch((error) => toast.error(error.response.data))
         .finally(() => setIsLoading(false));
     }
 
