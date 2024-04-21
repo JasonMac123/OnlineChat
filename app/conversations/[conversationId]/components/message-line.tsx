@@ -33,29 +33,30 @@ export const MessageLine = ({ data, isLast }: MessageLineProps) => {
           <p className="text-sm text-gray-500">{data.sender.name}</p>
           <p className="text-sm text-gray-500">{format(new Date(data.createdAt), "p")}</p>
         </div>
-      </div>
-      <div
-        className={cn(
-          "text-sm w-fit overflow-hidden",
-          (isOwn ? "bg-sky-500 text-white" : "bg-gray-100") &&
-            (data.image ? "rounded-md p-0" : "rounded-full py-2 px-3")
+        <div
+          className={cn(
+            "text-sm w-fit overflow-hidden",
+            (isOwn ? "bg-sky-500 text-white" : "bg-gray-100") &&
+              (data.image ? "rounded-md p-0" : "rounded-full py-2 px-3")
+          )}
+        >
+          {data.image ? (
+            <Image
+              alt="Image"
+              height={288}
+              width={288}
+              src={data.image}
+              className="object-cover cursor-pointer hover:scale-110 transition translate"
+            />
+          ) : (
+            <p>{data.body}</p>
+          )}
+        </div>
+
+        {isLast && isOwn && seenList.length > 0 && (
+          <p className="text-xs font-light text-gray-500">{`Seen by ${seenList}`}</p>
         )}
-      >
-        {data.image ? (
-          <Image
-            alt="Image"
-            height={288}
-            width={288}
-            src={data.image}
-            className="object-cover cursor-pointer hover:scale-110 transition translate"
-          />
-        ) : (
-          <p>{data.body}</p>
-        )}
       </div>
-      {isLast && isOwn && seenList.length > 0 && (
-        <p className="text-xs font-light text-gray-500">{`Seen by ${seenList}`}</p>
-      )}
     </div>
   );
 };
