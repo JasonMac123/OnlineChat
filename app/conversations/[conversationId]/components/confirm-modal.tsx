@@ -22,27 +22,26 @@ export const ConfirmModal = () => {
           <div className="p-4 bg-neutral-200 rounded-full">
             <Trash size={20} />
           </div>
-          <p>Delete Conversation</p>
+          <p className="text-sm font-light text-neutral-900">Delete</p>
         </div>
-        <p className="text-sm font-light text-neutral-900">Delete</p>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Are you absolutely sure?</DialogTitle>
         </DialogHeader>
-        <DialogDescription>
+        <DialogDescription className="py-4">
           This action cannot be undone. This will permananly delete your conversation and all your
           messages with this user.
         </DialogDescription>
+        <DialogFooter className="gap-4">
+          <DialogClose asChild>
+            <Button type="button" variant={"secondary"} className="w-full">
+              Cancel
+            </Button>
+          </DialogClose>
+          <Button className="w-full">Confirm</Button>
+        </DialogFooter>
       </DialogContent>
-      <DialogFooter>
-        <DialogClose asChild>
-          <Button type="button" variant={"secondary"}>
-            Cancel
-          </Button>
-        </DialogClose>
-        <Button>Confirm</Button>
-      </DialogFooter>
     </Dialog>
   );
 };
