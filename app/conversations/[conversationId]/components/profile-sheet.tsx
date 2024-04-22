@@ -66,9 +66,7 @@ export const ProfileSheet = ({ data }: ProfileSheetProps) => {
             <p className="text-sm mt-1 text-gray-900">{joinedDate}</p>
           </div>
         </div>
-        <div className="flex flex-col space-y-2 cursor-pointer items-center justify-center mt-40">
-          <ConfirmModal />
-        </div>
+        <ConfirmModal />
       </SheetContent>
     </Sheet>
   );

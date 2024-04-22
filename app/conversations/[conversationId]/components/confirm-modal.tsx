@@ -18,8 +18,11 @@ export const ConfirmModal = () => {
   return (
     <Dialog>
       <DialogTrigger>
-        <div className="p-4 bg-neutral-200 rounded-full">
-          <Trash size={20} />
+        <div className="flex flex-col space-y-2 cursor-pointer items-center justify-center mt-40">
+          <div className="p-4 bg-neutral-200 rounded-full">
+            <Trash size={20} />
+          </div>
+          <p>Delete Conversation</p>
         </div>
         <p className="text-sm font-light text-neutral-900">Delete</p>
       </DialogTrigger>
