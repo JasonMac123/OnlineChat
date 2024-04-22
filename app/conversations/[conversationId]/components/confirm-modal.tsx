@@ -1,6 +1,12 @@
 "use client";
 
+import { useCallback, useState } from "react";
 import { Trash } from "lucide-react";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import { toast } from "sonner";
+
+import useConversation from "@/app/hooks/useConversation";
 
 import {
   Dialog,
@@ -15,6 +21,24 @@ import {
 import { Button } from "@/components/ui/button";
 
 export const ConfirmModal = () => {
+  const router = useRouter();
+  const { conversationId } = useConversation();
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleConfirm = useCallback(() => {
+    setIsLoading(true);
+
+    axios
+      .delete(`/api/conversations/${conversationId}`)
+      .then(() => {
+        router.push("/conversations");
+        router.refresh();
+      })
+      .catch(() => toast.error("Something went wrong!"))
+      .finally(() => setIsLoading(false));
+  }, [conversationId, router]);
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -35,11 +59,15 @@ export const ConfirmModal = () => {
         </DialogDescription>
         <DialogFooter className="gap-4">
           <DialogClose asChild>
-            <Button type="button" variant={"secondary"} className="w-full">
+            <Button type="button" variant={"secondary"} className="w-full" disabled={isLoading}>
               Cancel
             </Button>
           </DialogClose>
-          <Button className="w-full">Confirm</Button>
+          <DialogTrigger>
+            <Button className="w-full" onClick={handleConfirm} disabled={isLoading}>
+              Confirm
+            </Button>
+          </DialogTrigger>
         </DialogFooter>
       </DialogContent>
     </Dialog>
