@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 export const ConfirmModal = () => {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <div className="flex flex-col space-y-2 cursor-pointer items-center justify-center mt-40">
           <div className="p-4 bg-neutral-200 rounded-full">
             <Trash size={20} />
