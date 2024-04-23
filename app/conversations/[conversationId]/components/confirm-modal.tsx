@@ -57,13 +57,13 @@ export const ConfirmModal = () => {
           This action cannot be undone. This will permananly delete your conversation and all your
           messages with this user.
         </DialogDescription>
-        <DialogFooter className="gap-4">
+        <DialogFooter className="gap-2">
           <DialogClose asChild>
             <Button type="button" variant={"outline"} className="w-full" disabled={isLoading}>
               Cancel
             </Button>
           </DialogClose>
-          <DialogTrigger>
+          <DialogTrigger asChild>
             <Button
               className="w-full"
               variant={"destructive"}
