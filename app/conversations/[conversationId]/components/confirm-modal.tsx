@@ -59,12 +59,17 @@ export const ConfirmModal = () => {
         </DialogDescription>
         <DialogFooter className="gap-4">
           <DialogClose asChild>
-            <Button type="button" variant={"secondary"} className="w-full" disabled={isLoading}>
+            <Button type="button" variant={"outline"} className="w-full" disabled={isLoading}>
               Cancel
             </Button>
           </DialogClose>
           <DialogTrigger>
-            <Button className="w-full" onClick={handleConfirm} disabled={isLoading}>
+            <Button
+              className="w-full"
+              variant={"destructive"}
+              onClick={handleConfirm}
+              disabled={isLoading}
+            >
               Confirm
             </Button>
           </DialogTrigger>
