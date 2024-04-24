@@ -10,7 +10,9 @@ import { cn } from "@/lib/utils";
 import useConversation from "@/app/hooks/useConversation";
 
 import { FullConversationType } from "@/app/types";
+
 import { ConversationItem } from "./conversation-item";
+import { GroupConversationModal } from "./group-conversation-modal";
 
 interface ConversationListProps {
   items: FullConversationType[];
@@ -33,9 +35,7 @@ export const ConversationList = ({ items, users }: ConversationListProps) => {
       <div className="px-5">
         <div className="flex justify-between mb-4 pt-4">
           <div className="text-2xl font-bold text-neutral-800">Messages</div>
-          <div className="rounded-full p-2 bg-gray-100 text-gray-600 cursor-pointer hover:opacity-75 transition">
-            <MessageSquarePlus size={24} />
-          </div>
+          <GroupConversationModal />
         </div>
         {list.map((chat) => (
           <ConversationItem key={chat.id} data={chat} selected={conversationId === chat.id} />
