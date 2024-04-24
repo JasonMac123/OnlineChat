@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { CldUploadButton } from "next-cloudinary";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "sonner";
@@ -10,19 +12,15 @@ import { User } from "@prisma/client";
 
 import {
   Dialog,
-  DialogHeader,
   DialogContent,
   DialogClose,
   DialogDescription,
   DialogTitle,
   DialogTrigger,
-  DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { UserAvatar } from "../user-avatar";
 import { Input } from "../ui/input";
-import { CldUploadButton } from "next-cloudinary";
-import Image from "next/image";
 
 interface SettingsModalProps {
   currentUser: User | null;
