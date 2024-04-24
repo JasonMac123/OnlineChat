@@ -74,18 +74,18 @@ export const SettingsModal = ({ currentUser }: SettingsModalProps) => {
           </div>
         </nav>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent onInteractOutside={(e: Event) => e.preventDefault()}>
         <DialogTitle>Profile</DialogTitle>
         <DialogDescription>Edit your profile information and user avatar</DialogDescription>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="mt-10 flex flex-col gap-y-8">
+          <div className="my-4 flex flex-col gap-y-2">
             <Input type="name" placeholder="Name" {...register("name")} />
             <div className="mt-2 flex items-center gap-x-3">
               <Image
                 width="48"
                 height="48"
                 className="rounded-full"
-                src={image || currentUser?.image || "/images/placeholder.jpg"}
+                src={image || currentUser?.image || "/images/placeholder.png"}
                 alt="Avatar"
               />
               <CldUploadButton
@@ -99,20 +99,20 @@ export const SettingsModal = ({ currentUser }: SettingsModalProps) => {
               </CldUploadButton>
             </div>
           </div>
+          <div className="flex gap-2">
+            <DialogClose asChild>
+              <Button type="button" variant={"outline"} className="w-full" disabled={isLoading}>
+                Cancel
+              </Button>
+            </DialogClose>
+            <DialogTrigger asChild>
+              <Button className="w-full" variant={"default"} type="submit" disabled={isLoading}>
+                Confirm
+              </Button>
+            </DialogTrigger>
+          </div>
         </form>
       </DialogContent>
-      <DialogFooter>
-        <DialogClose asChild>
-          <Button type="button" variant={"outline"} className="w-full" disabled={isLoading}>
-            Cancel
-          </Button>
-        </DialogClose>
-        <DialogTrigger asChild>
-          <Button className="w-full" variant={"default"} type="submit" disabled={isLoading}>
-            Confirm
-          </Button>
-        </DialogTrigger>
-      </DialogFooter>
     </Dialog>
   );
 };
