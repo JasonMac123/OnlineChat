@@ -72,11 +72,12 @@ export const SettingsModal = ({ currentUser }: SettingsModalProps) => {
           </div>
         </nav>
       </DialogTrigger>
-      <DialogContent onInteractOutside={(e: Event) => e.preventDefault()}>
+      <DialogContent>
         <DialogTitle>Profile</DialogTitle>
         <DialogDescription>Edit your profile information and user avatar</DialogDescription>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="my-4 flex flex-col gap-y-2">
+            <h2>Enter your new name!</h2>
             <Input type="name" placeholder="Name" {...register("name")} />
             <div className="mt-2 flex items-center gap-x-3">
               <Image
