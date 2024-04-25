@@ -57,16 +57,30 @@ export const ProfileSheet = ({ data }: ProfileSheetProps) => {
             <SheetDescription>{statusText}</SheetDescription>
           </div>
         </SheetHeader>
-        <div className="space-y-4">
-          <div className="flex flex-col">
-            <p className="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0">Email</p>
-            <p className="text-sm mt-1 text-gray-900">{otherUser.email}</p>
+        {data.isGroup ? (
+          <div className="space-y-4">
+            <div className="flex flex-col">
+              <p className="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0">Emails</p>
+              <p className="text-sm mt-1 text-gray-900">
+                {data.users.map((user) => user.email).join(", ")}
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col">
-            <p className="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0">Join Date</p>
-            <p className="text-sm mt-1 text-gray-900">{joinedDate}</p>
+        ) : (
+          <div className="space-y-4">
+            <div className="flex flex-col">
+              <p className="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0">Email</p>
+              <p className="text-sm mt-1 text-gray-900">{otherUser.email}</p>
+            </div>
+            <div className="flex flex-col">
+              <p className="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0">
+                Join Date
+              </p>
+              <p className="text-sm mt-1 text-gray-900">{joinedDate}</p>
+            </div>
           </div>
-        </div>
+        )}
+
         <ConfirmModal />
       </SheetContent>
     </Sheet>
