@@ -1,8 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import axios from "axios";
+import { toast } from "sonner";
 import { MessageSquarePlus } from "lucide-react";
+
+import { User } from "@prisma/client";
 
 import {
   Dialog,
@@ -12,13 +17,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import axios from "axios";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import Select from "@/components/select";
 
-export const GroupConversationModal = () => {
+interface GroupConversationModalProps {
+  users: User[];
+}
+
+export const GroupConversationModal = ({ users }: GroupConversationModalProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -72,7 +78,13 @@ export const GroupConversationModal = () => {
               placeholder="Group Chat Name"
               {...register("name", { required: true })}
             />
-            <Select />
+            <Select
+              disabled={isLoading}
+              label="Members"
+              options={users.map((user) => ({ value: user.id, label: user.name }))}
+              onChange={(value) => setValue("members", value, { shouldValidate: true })}
+              value={members}
+            />
           </div>
         </form>
       </DialogContent>
