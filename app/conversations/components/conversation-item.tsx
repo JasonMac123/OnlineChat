@@ -11,6 +11,7 @@ import { FullConversationType } from "@/app/types";
 import useOtherUser from "@/app/hooks/useOtherUser";
 
 import { UserAvatar } from "@/components/user-avatar";
+import { GroupAvatar } from "@/components/group-avatar";
 
 interface ConversationItemProps {
   data: FullConversationType;
@@ -70,7 +71,7 @@ export const ConversationItem = ({ data, selected }: ConversationItemProps) => {
         selected ? "bg-neutral-100" : "bg-white"
       )}
     >
-      <UserAvatar user={otherUser} />
+      {data.isGroup ? <GroupAvatar users={data.users} /> : <UserAvatar user={otherUser} />}
       <div className="min-w-0 flex-1">
         <div className="focus:outline-none">
           <div className="flex justify-between items-center mb-1">
