@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/sheet";
 import { UserAvatar } from "@/components/user-avatar";
 import { ConfirmModal } from "./confirm-modal";
+import { GroupAvatar } from "@/components/group-avatar";
 
 interface ProfileSheetProps {
   data: Conversation & {
@@ -51,7 +52,7 @@ export const ProfileSheet = ({ data }: ProfileSheetProps) => {
       <SheetContent side={"right"} className="w-full md:w-1/2 lg:w-1/3 xl:w-1/6">
         <SheetHeader>
           <div className="flex flex-col items-center justify-center space-y-2">
-            <UserAvatar user={otherUser} />
+            {data.isGroup ? <GroupAvatar users={data.users} /> : <UserAvatar user={otherUser} />}
             <SheetTitle>{title}</SheetTitle>
             <SheetDescription>{statusText}</SheetDescription>
           </div>
