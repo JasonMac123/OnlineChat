@@ -11,6 +11,7 @@ import { User } from "@prisma/client";
 
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -19,6 +20,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import Select from "@/components/select";
+import { Button } from "@/components/ui/button";
 
 interface GroupConversationModalProps {
   users: User[];
@@ -85,6 +87,16 @@ export const GroupConversationModal = ({ users }: GroupConversationModalProps) =
               onChange={(value) => setValue("members", value, { shouldValidate: true })}
               value={members}
             />
+          </div>
+          <div className="mt-6 flex items-center gap-x-2">
+            <DialogClose>
+              <Button disabled={isLoading} variant={"outline"} type="button">
+                Close
+              </Button>
+            </DialogClose>
+            <DialogTrigger>
+              <Button type="submit">Create</Button>
+            </DialogTrigger>
           </div>
         </form>
       </DialogContent>
