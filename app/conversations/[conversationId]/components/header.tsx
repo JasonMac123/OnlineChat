@@ -9,6 +9,7 @@ import useOtherUser from "@/app/hooks/useOtherUser";
 
 import { UserAvatar } from "@/components/user-avatar";
 import { ProfileSheet } from "./profile-sheet";
+import { GroupAvatar } from "@/components/group-avatar";
 
 interface HeaderProps {
   conversation: Conversation & {
@@ -36,7 +37,11 @@ export const Header = ({ conversation }: HeaderProps) => {
         >
           <ArrowLeft />
         </Link>
-        <UserAvatar user={otherUser} />
+        {conversation.isGroup ? (
+          <GroupAvatar users={conversation.users} />
+        ) : (
+          <UserAvatar user={otherUser} />
+        )}
         <div className="flex flex-col">
           <div>{conversation.name || otherUser.name}</div>
           <div className="text-sm font-light text-neutral-500">{statusText}</div>
