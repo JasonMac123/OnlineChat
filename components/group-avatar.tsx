@@ -22,7 +22,9 @@ export const GroupAvatar = ({ users }: GroupAvatarProps) => {
       {slicedUsers.map((user, index) => (
         <div
           key={user.id}
-          className={`absolute inline-block rounded-full overflow-hidden h-[21px] w-[21px] ${positionMap[index]}`}
+          className={`absolute inline-block rounded-full overflow-hidden h-[21px] w-[21px] ${
+            positionMap[index as keyof typeof positionMap]
+          }`}
         >
           <Image alt="Avatar" fill src={user.image || "/images/placeholder.png"} />
         </div>
