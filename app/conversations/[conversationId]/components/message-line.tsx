@@ -37,8 +37,8 @@ export const MessageLine = ({ data, isLast }: MessageLineProps) => {
           {data.image ? (
             <Image
               alt="Image"
-              height={288}
-              width={288}
+              height={150}
+              width={150}
               src={data.image}
               className="object-cover cursor-pointer hover:scale-110 transition translate"
             />
