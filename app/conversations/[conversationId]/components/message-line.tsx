@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { UserAvatar } from "@/components/user-avatar";
 import { format } from "date-fns";
 import Image from "next/image";
+import { ImageModal } from "./image-modal";
 
 interface MessageLineProps {
   data: FullMessageType;
@@ -35,13 +36,15 @@ export const MessageLine = ({ data, isLast }: MessageLineProps) => {
         </div>
         <div>
           {data.image ? (
-            <Image
-              alt="Image"
-              height={150}
-              width={150}
-              src={data.image}
-              className="object-cover cursor-pointer hover:scale-110 transition translate"
-            />
+            <ImageModal src={data.image}>
+              <Image
+                alt="Image"
+                height={150}
+                width={150}
+                src={data.image}
+                className="object-cover cursor-pointer hover:scale-110 transition translate"
+              />
+            </ImageModal>
           ) : (
             <p
               className={cn(
