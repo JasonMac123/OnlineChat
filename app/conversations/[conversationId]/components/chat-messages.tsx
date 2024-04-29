@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { find } from "lodash";
+import axios from "axios";
 
 import useConversation from "@/app/hooks/useConversation";
+import { pusherClient } from "@/lib/pusher";
 import { FullMessageType } from "@/app/types";
 
 import { MessageLine } from "./message-line";
-import axios from "axios";
 
 interface ChatMessagesProps {
   initialMessages: FullMessageType[];
@@ -20,6 +22,28 @@ export const ChatMessages = ({ initialMessages }: ChatMessagesProps) => {
 
   useEffect(() => {
     axios.post(`/api/conversations/${conversationId}`);
+  }, [conversationId]);
+
+  useEffect(() => {
+    pusherClient.subscribe(conversationId);
+    bottomRef.current?.scrollIntoView();
+
+    const messageHandler = (message: FullMessageType) => {
+      setMessages((current) => {
+        if (find(current, { id: message.id })) {
+          return current;
+        }
+
+        return [...current, message];
+      });
+    };
+
+    pusherClient.bind("messages:new", messageHandler);
+
+    return () => {
+      pusherClient.unsubscribe(conversationId);
+      pusherClient.unbind("messages:new", messageHandler);
+    };
   }, [conversationId]);
 
   return (
