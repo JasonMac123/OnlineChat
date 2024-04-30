@@ -7,6 +7,7 @@ import { useCallback, useState } from "react";
 import { User } from "@prisma/client";
 
 import { UserAvatar } from "@/components/user-avatar";
+import { LoadingModal } from "@/components/loading-model";
 
 interface UserItemProps {
   data: User;
@@ -31,6 +32,7 @@ export const UserItem = ({ data }: UserItemProps) => {
 
   return (
     <>
+      <LoadingModal open={isLoading} />
       <div
         onClick={handleClick}
         className="w-full relative flex items-center space-x-3 bg-white p-3 hover:bg-neutral-100 rounded-lg transition cursor-pointer"
