@@ -1,8 +1,9 @@
-import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 
 import prisma from "@/lib/db";
 import { pusherServer } from "@/lib/pusher";
+
+import getCurrentUser from "@/app/actions/getCurrentUser";
 
 interface PostParams {
   conversationId?: string;
