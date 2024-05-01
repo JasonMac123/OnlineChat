@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
-import toast from "react-hot-toast";
-import { Github, Youtube } from "lucide-react";
+import { Github } from "lucide-react";
+import { toast } from "sonner";
 
 import { useState, useEffect, useCallback } from "react";
 
@@ -69,7 +69,7 @@ export const AuthForm = () => {
             router.push("/conversations");
           }
         })
-        .catch(() => toast.error("Something went wrong!"))
+        .catch((error) => toast.error(error.response.data))
         .finally(() => setIsLoading(false));
     }
 
@@ -81,10 +81,12 @@ export const AuthForm = () => {
         .then((callback) => {
           if (callback?.error) {
             toast.error("Invalid credentials!");
+            return;
           }
 
           if (callback?.ok) {
             router.push("/conversations");
+            return;
           }
         })
         .finally(() => setIsLoading(false));

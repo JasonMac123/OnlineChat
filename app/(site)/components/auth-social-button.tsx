@@ -7,7 +7,7 @@ interface AuthSocialButtonProps {
   onClick: () => void;
 }
 
-const AuthSocialButton: React.FC<AuthSocialButtonProps> = ({ icon: Icon, label, onClick }) => {
+const AuthSocialButton = ({ icon: Icon, label, onClick }: AuthSocialButtonProps) => {
   return (
     <Button className="w-full py-4" onClick={onClick}>
       <Icon />

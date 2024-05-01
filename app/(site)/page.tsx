@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { AuthForm } from "./components/auth-form";
 
-export default function Home() {
+const Home = () => {
   return (
     <div className="flex h-screen flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-100">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -19,4 +19,6 @@ export default function Home() {
       <AuthForm />
     </div>
   );
-}
+};
+
+export default Home;
